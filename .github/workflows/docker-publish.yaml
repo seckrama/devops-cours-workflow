@@ -2,8 +2,8 @@ name: Build and Push React App to Docker Hub
 
 on:
   push:
-    branches: ["main"]   # Déclenche seulement sur push sur la branche main
-  workflow_dispatch:      # Permet de déclencher manuellement
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,10 +21,10 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      # 3. Construire et pousser l’image
+      # 3. Construire et pousser l'image
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/react-app:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/react-app:latest
