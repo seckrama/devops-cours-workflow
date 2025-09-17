@@ -10,6 +10,9 @@ COPY package*.json ./
 # Installer les dépendances
 RUN npm install
 
+CMD ["npm", "start"]
+
+
 # Copier le reste du code
 COPY . .
 
